@@ -1,0 +1,47 @@
+data_sources:
+  sales_data:
+    type: "csv"
+    path: "data/raw/sales_data.csv"
+    delimiter: ","
+    encoding: "utf-8"
+    
+  customer_data:
+    type: "json"
+    path: "data/raw/customers.json"
+    
+  product_catalog:
+    type: "csv"
+    path: "data/raw/products.csv"
+    delimiter: ","
+    
+  web_analytics:
+    type: "api"
+    url: "https://api.example.com/analytics"
+    auth_required: true
+
+data_quality:
+  null_threshold: 0.05  # 5% max null values
+  duplicate_threshold: 0.01  # 1% max duplicates
+  data_freshness_hours: 24
+  
+transformations:
+  customer_segmentation:
+    rfm_quantiles: [0.2, 0.4, 0.6, 0.8, 1.0]
+    
+  sales_metrics:
+    aggregation_periods: ["daily", "weekly", "monthly"]
+    
+  data_warehouse:
+    batch_size: 10000
+    parallel_workers: 4
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/pipeline.log"
+  
+monitoring:
+  enable_metrics: true
+  alert_thresholds:
+    error_rate: 0.05
+    processing_time_minutes: 30 
