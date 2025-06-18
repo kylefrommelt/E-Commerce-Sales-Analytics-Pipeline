@@ -1,0 +1,8 @@
+# Lightweight requirements for testing
+pandas>=2.0.0
+pyyaml>=6.0
+requests>=2.25.0
+
+# Optional dependencies for full functionality
+# psycopg2-binary>=2.9.0  # Uncomment if testing with PostgreSQL
+# sqlalchemy>=2.0.0       # Uncomment if testing with database 
